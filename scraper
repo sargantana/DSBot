@@ -1,0 +1,19 @@
+# desired URL is this format
+# https://app.dsbcontrol.de/data/00b0e158-b872-404d-9e52-603d1e09e70c/3b3878ed-1278-4404-a1ad-ef7f402101fa/33/c/c00075.htm
+# https://app.dsbcontrol.de/data/_this is the school ID_/_this is the data-uuid_/_calendar week_/c/c000075.htm
+# data-uuid can be obtained on page source code
+
+#
+
+# Login to Server and keep cookies.
+wget --save-cookies cookies.txt \                 
+     --keep-session-cookies \
+     --post-data 'user=180762&password=releuchs' \
+     --delete-after \
+     http://dsbmobile.de/Login.aspx
+     
+# Now grab the page
+wget -o cachedsite.html --load-cookies cookies.txt \
+    https://app.dsbcontrol.de/data/00b0e158-b872-404d-9e52-603d1e09e70c/
+    
+    grep [data-uuid="] cachedsite.html
