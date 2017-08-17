@@ -4,7 +4,8 @@
 # data-uuid can be obtained on page source code
 
 #
-
+kw=$(date +%V)			     #get calendar week
+day=$(date +%a)			#Tag in Kurzform "xxx" in variable day schreiben)
 # Login to Server and keep cookies.
 wget --save-cookies cookies.txt \                 
      --keep-session-cookies \
@@ -13,7 +14,7 @@ wget --save-cookies cookies.txt \
      http://dsbmobile.de/Login.aspx
      
 # Now grab the page
-wget -o cachedsite.html --load-cookies cookies.txt \
+wget -q -O timetabletemp --load-cookies cookies.txt \
     https://app.dsbcontrol.de/data/00b0e158-b872-404d-9e52-603d1e09e70c/
     
     grep [data-uuid="] cachedsite.html
